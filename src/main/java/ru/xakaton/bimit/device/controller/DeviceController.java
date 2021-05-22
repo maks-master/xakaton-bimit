@@ -51,7 +51,7 @@ public class DeviceController {
 	
 	
 	@GetMapping("/device/{type}/alarms/{time}") 
-	public AlarmTimeLine getAlarms(@PathVariable int type, @PathVariable Timestamp time) {
+	public AlarmTimeLine getAlarms(@PathVariable int type, @PathVariable Long time) {
 		return deviceService.getAlarms(type, time);
 	}
 	
@@ -61,7 +61,7 @@ public class DeviceController {
 	}
 	
 	@GetMapping("/device/alarms/{time}") 
-	public AlarmTimeLine getAlarms(@PathVariable Timestamp time) {
+	public AlarmTimeLine getAlarms(@PathVariable Long time) {
 		return deviceService.getAlarms(time);
 	}
 	

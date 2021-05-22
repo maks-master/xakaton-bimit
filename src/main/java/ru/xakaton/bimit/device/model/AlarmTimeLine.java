@@ -1,13 +1,12 @@
 package ru.xakaton.bimit.device.model;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public class AlarmTimeLine {
 	private List<AlarmDTO> alarms;
-	private Timestamp time;
+	private Long time;
 	
-	public AlarmTimeLine(List<AlarmDTO> alarms, Timestamp time) {
+	public AlarmTimeLine(List<AlarmDTO> alarms, Long time) {
 		super();
 		this.alarms = alarms;
 		this.time = time;
@@ -18,12 +17,13 @@ public class AlarmTimeLine {
 	public void setAlarms(List<AlarmDTO> alarms) {
 		this.alarms = alarms;
 	}
-	public Timestamp getTime() {
+	public Long getTime() {
 		return time;
 	}
-	public void setTime(Timestamp time) {
+	public void setTime(Long time) {
 		this.time = time;
 	}
+
 	
 	
 }

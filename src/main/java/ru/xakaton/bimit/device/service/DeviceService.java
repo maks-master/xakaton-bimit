@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
+
 
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ru.xakaton.bimit.device.enums.AlarmLevel;
 import ru.xakaton.bimit.device.enums.DeviceType;
 import ru.xakaton.bimit.device.model.Alarm;
 import ru.xakaton.bimit.device.model.AlarmDTO;
@@ -53,11 +52,11 @@ public class DeviceService {
 		deviceRepository.deleteById(uudi);		
 	}
 
-	public List<AlarmDTO> getAlarms(UUID uuid, Timestamp ts) {
+	public List<AlarmDTO> getAlarms(UUID uuid, Long ts) {
 		if (ts == null) {
-			ts = new Timestamp(new Date().getTime() - 5*60*1000L);
+			ts = new Date().getTime() - 5*60*1000L;
 		}
-		List<Alarm> alarms = alarmRepository.findAllByDeviceUuidAndTimeAfterOrderByTime(uuid, ts);
+		List<Alarm> alarms = alarmRepository.findAllByDeviceUuidAndTimeAfterOrderByTime(uuid, new Timestamp(ts));
 		List<AlarmDTO> alarmsDTO = new ArrayList<AlarmDTO>();
 		
 		for (Alarm alarm: alarms) {
@@ -100,17 +99,17 @@ public class DeviceService {
 	    return alarmsDTO;
 	}
 
-	public AlarmTimeLine getAlarms(int devType, Timestamp ts) {
+	public AlarmTimeLine getAlarms(int devType, Long ts) {
 		List<AlarmDTO> alarms = new ArrayList<AlarmDTO>();
 		List<Device> devs = deviceRepository.findAllByDeviceType(DeviceType.findValue(""+devType));
 		for (Device device: devs) {
 			alarms.addAll(getAlarms(device.getUuid(), ts));
 		}
 		
-		return new AlarmTimeLine(alarms, new Timestamp(new Date().getTime()));
+		return new AlarmTimeLine(alarms, new Date().getTime());
 	}
 	
-	public AlarmTimeLine getAlarms(Timestamp ts) {
+	public AlarmTimeLine getAlarms(Long ts) {
 		List<AlarmDTO> alarms = new ArrayList<AlarmDTO>();
 		List<Device> devs = list();
 		
@@ -119,6 +118,6 @@ public class DeviceService {
 		}
 		
 		
-		return new AlarmTimeLine(alarms, new Timestamp(new Date().getTime()));
+		return new AlarmTimeLine(alarms, new Date().getTime());
 	}
 }
