@@ -11,7 +11,7 @@ public class Coord {
 	
 	@Id
 	@GeneratedValue
-	private UUID uid;
+	private UUID uuid;
 
 	private Double x;
 	private Double y;
