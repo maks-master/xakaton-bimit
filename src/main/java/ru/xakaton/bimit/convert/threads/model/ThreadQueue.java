@@ -106,4 +106,13 @@ public class ThreadQueue {
 	public boolean isStoped() {
 		return this.stop == 1;
 	}
+
+	public UUID getModelUuid() {
+		return modelUuid;
+	}
+
+	public void setModelUuid(UUID modelUuid) {
+		this.modelUuid = modelUuid;
+	}
+	
 }

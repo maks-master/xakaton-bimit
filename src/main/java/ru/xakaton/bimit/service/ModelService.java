@@ -20,9 +20,6 @@ import ru.xakaton.bimit.storage.StorageService;
 public class ModelService {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
-	/*@Autowired
-	private ApplicationEventPublisher applicationEventPublisher;
-*/
 	@Autowired
 	private ModelRepository modelRepository;
 	
