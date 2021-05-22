@@ -15,7 +15,7 @@ import ru.xakaton.bimit.convert.threads.MainThread;
 
 
 @Component
-public class PirsbimEventListener implements ApplicationListener<ApplicationReadyEvent> {
+public class BimitEventListener implements ApplicationListener<ApplicationReadyEvent> {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -42,7 +42,7 @@ public class PirsbimEventListener implements ApplicationListener<ApplicationRead
 	}
 
 	public static void setMainThread(LongActionThread mainThread) {
-		PirsbimEventListener.mainThread = mainThread;
+		BimitEventListener.mainThread = mainThread;
 	}
 
 }
