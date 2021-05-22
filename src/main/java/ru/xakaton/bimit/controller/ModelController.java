@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import ru.xakaton.bimit.device.model.DeviceState;
+import ru.xakaton.bimit.device.model.DeviceStateDTO;
 import ru.xakaton.bimit.model.Model;
 import ru.xakaton.bimit.service.ModelService;
 
@@ -40,8 +42,14 @@ public class ModelController {
 
 	
 	@GetMapping("/devices/state")
-	public List<DeviceState> getStateDevices() {
+	public List<DeviceStateDTO> getStateDevices() {
 		return modelService.getStateDevices();
+	}
+	
+	
+	@PatchMapping("/devices/state/{uuid}/read")
+	public ResponseEntity<?> readState(@RequestParam("uuid") UUID uuid) {
+		return modelService.readState(uuid);
 	}
 	
 
