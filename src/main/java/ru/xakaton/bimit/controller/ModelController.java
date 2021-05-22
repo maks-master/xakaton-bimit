@@ -1,6 +1,7 @@
 package ru.xakaton.bimit.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import ru.xakaton.bimit.device.model.DeviceState;
 import ru.xakaton.bimit.model.Model;
 import ru.xakaton.bimit.service.ModelService;
 
 @RestController
 @RequestMapping("/model")
-public class RevisionController {
+public class ModelController {
 	@Autowired
 	ModelService modelService;
 	
@@ -36,6 +38,11 @@ public class RevisionController {
 		return modelService.addModel(allParams, file);
 	}
 
+	
+	@GetMapping("/devices/state")
+	public List<DeviceState> getStateDevices() {
+		return modelService.getStateDevices();
+	}
 	
 
 }

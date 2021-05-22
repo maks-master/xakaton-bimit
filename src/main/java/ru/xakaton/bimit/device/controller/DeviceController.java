@@ -1,6 +1,5 @@
 package ru.xakaton.bimit.device.controller;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ru.xakaton.bimit.device.model.AlarmDTO;
 import ru.xakaton.bimit.device.model.AlarmTimeLine;
 import ru.xakaton.bimit.device.model.Device;
 import ru.xakaton.bimit.device.service.DeviceService;

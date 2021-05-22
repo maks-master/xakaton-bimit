@@ -66,7 +66,7 @@ public class DeviceService {
 				if (!lastAlarm.getAlarmLevel().equals(alarm.getAlarmLevel())) {
 					newA = true;
 				} else {
-					if (lastAlarm.getEndTime().after(new Timestamp(alarm.getTime().getTime()-60*1000L))) {
+					if (lastAlarm.getEndTime().after(new Timestamp(alarm.getTime().getTime()-1000L))) {
 						DeviceData data = deviceDataRepository.findById(alarm.getDeviceDataUuid()).orElse(null);
 						if (data != null) {
 							lastAlarm.setEndTime(new Timestamp(data.getTime().getTime()+data.getCount()*1000L/120L));

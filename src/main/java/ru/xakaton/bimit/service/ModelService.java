@@ -2,8 +2,10 @@ package ru.xakaton.bimit.service;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import ru.xakaton.bimit.device.model.AlarmTimeLine;
+import ru.xakaton.bimit.device.model.DeviceState;
+import ru.xakaton.bimit.device.repository.DeviceStateRepository;
+import ru.xakaton.bimit.device.service.DeviceService;
 import ru.xakaton.bimit.model.Model;
 import ru.xakaton.bimit.model.ProcessState;
 import ru.xakaton.bimit.repository.ModelRepository;
@@ -28,6 +34,12 @@ public class ModelService {
 	
 	@Autowired
 	private ProcessService processService;
+	
+	@Autowired
+	DeviceStateRepository deviceStateRepository;
+	
+	@Autowired
+	DeviceService deviceService;
 	
 	public Model loadModel(UUID uid) {
 		return modelRepository.findById(uid)
@@ -77,21 +89,8 @@ public class ModelService {
 		m.put("ProcessState", processState);
 		return m;
 	}
-	
-	/*public ResponseEntity<Resource> fileResponseModelRevision(UUID uid) {
-		ModelRevision modelRevision = modelRevisionRepository.findById(uid).orElseThrow(() -> new RuntimeException("ModelRevision " + uid + " not found"));
-		String filePath = PathService.getModelRevisionPath(modelRevision);
-		Resource file = storageService.loadAsResource(filePath);
-		return ResponseEntity.ok()
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
-				.body(file);
+
+	public List<DeviceState> getStateDevices() {
+		return deviceService.list().parallelStream().map(device -> deviceStateRepository.findFirstByDeviceUuid(device.getUuid()).get()).collect(Collectors.toList());
 	}
-	
-	public ModelRevision loadModel(UUID uid) {
-		return modelRevisionRepository.findById(uid)
-				.orElseThrow(() -> new RuntimeException("ModelRevision not found " + uid));
-	}
-	
-	*/
-	
 }
