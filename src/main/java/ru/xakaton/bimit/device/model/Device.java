@@ -2,6 +2,7 @@ package ru.xakaton.bimit.device.model;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,10 +25,13 @@ public class Device {
 	private Double maxValue;
 	private DeviceState deviceState;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Coord position;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Coord cameraPosition;
+	
+	private String elementId;
+	private String sensorId;
 
 	public UUID getUuid() {
 		return uuid;
@@ -99,6 +103,22 @@ public class Device {
 	
 	public void setDeviceState(DeviceState deviceState) {
 		this.deviceState = deviceState;
+	}
+
+	public String getElementId() {
+		return elementId;
+	}
+
+	public void setElementId(String elementId) {
+		this.elementId = elementId;
+	}
+
+	public String getSensorId() {
+		return sensorId;
+	}
+
+	public void setSensorId(String sensorId) {
+		this.sensorId = sensorId;
 	}
 
 }
