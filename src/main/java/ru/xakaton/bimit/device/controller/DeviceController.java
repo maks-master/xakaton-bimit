@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ru.xakaton.bimit.device.model.Alarm;
 import ru.xakaton.bimit.device.model.AlarmTimeLine;
 import ru.xakaton.bimit.device.model.Device;
 import ru.xakaton.bimit.device.service.DeviceService;
@@ -62,5 +63,10 @@ public class DeviceController {
 	public AlarmTimeLine getAlarms(@PathVariable Long time) {
 		return deviceService.getAlarms(time);
 	}
+	
+	/*@GetMapping("/device/alarm/{uuid}") 
+	public Alarm getAlarms(@PathVariable UUID uuid) {
+		return deviceService.getAlarm(uuid);
+	}*/
 	
 }

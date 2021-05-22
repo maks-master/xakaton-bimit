@@ -123,9 +123,10 @@ public class ModelService {
 			DeviceStateDTO destination = context.getDestination();
 			String color="#DEDEDE;";
 			
-			if (source.getAlarmUuid()!=null) { 
+			if (source.getAlarmUuid() != null) { 
 				Alarm alarm = alarmRepository.findById(source.getAlarmUuid()).get();
 				if (alarm!=null) {
+					destination.setAlarm(alarm);
 					switch (alarm.getAlarmLevel()) {
 					case WARNING:
 						//желтый
