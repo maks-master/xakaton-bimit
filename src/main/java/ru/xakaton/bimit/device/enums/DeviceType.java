@@ -1,4 +1,4 @@
-package ru.xakaton.bimitenums;
+package ru.xakaton.bimit.device.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -7,15 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Arrays;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum DeviceState {
-	ONLINE(0, "В сети"),
-	OFFLINE(1, "Не в сети"),
-	SERVICE(2, "Сервисный режим");
+public enum DeviceType {
+	TEMPERATURE(0, "Температура"),
+	LUMINOSITY(1, "Освещение"),
+	POWER(2, "Электроэнергия");
 
 	private final String title;
 	private final int value;
 
-	DeviceState(int value, String title) {
+	DeviceType(int value, String title) {
 		this.title = title;
 		this.value = value;
 	}
@@ -33,12 +33,12 @@ public enum DeviceState {
 	}
 
 	@JsonCreator
-	static DeviceState findValue(@JsonProperty("value") String value) {
+	static DeviceType findValue(@JsonProperty("value") String value) {
 		try {
 			int x = Integer.parseInt(value);
-			return Arrays.stream(DeviceState.values()).filter(v -> v.getValue() == x).findFirst().get();
+			return Arrays.stream(DeviceType.values()).filter(v -> v.getValue() == x).findFirst().get();
 		} catch (Exception s) {
-			return DeviceState.valueOf(value);
+			return DeviceType.valueOf(value);
 		}
 	}
 

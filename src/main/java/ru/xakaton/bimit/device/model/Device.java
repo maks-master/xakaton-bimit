@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import ru.xakaton.bimitenums.DeviceState;
-import ru.xakaton.bimitenums.DeviceType;
+import ru.xakaton.bimit.device.enums.DeviceState;
+import ru.xakaton.bimit.device.enums.DeviceType;
 
 @Entity
 public class Device {
