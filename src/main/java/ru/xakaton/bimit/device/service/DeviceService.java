@@ -58,6 +58,7 @@ public class DeviceService {
 		}
 		List<Alarm> alarms = alarmRepository.findAllByDeviceUuidAndTimeAfterOrderByTime(uuid, new Timestamp(ts));
 		List<AlarmDTO> alarmsDTO = new ArrayList<AlarmDTO>();
+		AlarmDTO alDto = new AlarmDTO();
 		
 		for (Alarm alarm: alarms) {
 			boolean newA = false;
@@ -71,12 +72,12 @@ public class DeviceService {
 						if (data != null) {
 							lastAlarm.setEndTime(new Timestamp(data.getTime().getTime()+data.getCount()*1000L/120L));
 						} 
-					}
+					} else newA = true;
 				}
 			}
 			
 			if (alarmsDTO.isEmpty() || newA) {
-				AlarmDTO alDto = new AlarmDTO();
+				alDto = new AlarmDTO();
 				alDto.setDeviceDataUuid(alarm.getDeviceDataUuid());
 				alDto.setDeviceUuid(alarm.getDeviceUuid());
 				alDto.setInfo(alarm.getInfo());
