@@ -120,5 +120,8 @@ public class Device {
 	public void setSensorId(String sensorId) {
 		this.sensorId = sensorId;
 	}
+	
+	
+	
 
 }
