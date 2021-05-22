@@ -17,6 +17,14 @@ public class Coord {
 	private Double y;
 	private Double z;
 	
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
+
 	public Double getX() {
 		return x;
 	}
