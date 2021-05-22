@@ -15,7 +15,7 @@ public class Device {
 
 	@Id
 	@GeneratedValue
-	private UUID uid;
+	private UUID uuid;
 	
 	private DeviceType deviceType;
 	private String name;
@@ -28,15 +28,31 @@ public class Device {
 	private Coord position;
 	@OneToOne
 	private Coord cameraPosition;
-	
-	public UUID getUid() {
-		return uid;
+
+	public UUID getUuid() {
+		return uuid;
 	}
-	
-	public void setUid(UUID uid) {
-		this.uid = uid;
+
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
 	}
-	
+
+	public Coord getPosition() {
+		return position;
+	}
+
+	public void setPosition(Coord position) {
+		this.position = position;
+	}
+
+	public Coord getCameraPosition() {
+		return cameraPosition;
+	}
+
+	public void setCameraPosition(Coord cameraPosition) {
+		this.cameraPosition = cameraPosition;
+	}
+
 	public DeviceType getDeviceType() {
 		return deviceType;
 	}

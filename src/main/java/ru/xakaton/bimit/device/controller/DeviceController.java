@@ -37,7 +37,7 @@ public class DeviceController {
 	}
 	
 	@DeleteMapping("/devices/{uuid}")
-	public void delete(@PathVariable UUID uudi) {
-		deviceService.delete(uudi);
+	public void delete(@PathVariable UUID uuid) {
+		deviceService.delete(uuid);
 	}
 }
