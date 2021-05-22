@@ -19,18 +19,18 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-//import ru.xakaton.bimit.enums.ProcessType;
-import ru.xakaton.bimit.enums.StateProcess;
-import ru.xakaton.bimit.event.RevisionNotificationEvent;
-import ru.xakaton.bimit.model.ProcessState;
-import ru.xakaton.bimit.repository.ProcessRepository;
-import ru.xakaton.bimit.model.Model;
-import ru.xakaton.bimit.storage.StorageService;
 import ru.xakaton.bimit.convert.threads.LongActionThread;
 //import ru.xakaton.bimit.convert.threads.enums.ThreadQueueObject;
 import ru.xakaton.bimit.convert.threads.model.ThreadQueue;
 import ru.xakaton.bimit.convert.threads.repository.ThreadQueueRepository;
 import ru.xakaton.bimit.convert.threads.repository.ThreadRegisterRepository;
+//import ru.xakaton.bimit.enums.ProcessType;
+import ru.xakaton.bimit.enums.StateProcess;
+import ru.xakaton.bimit.event.RevisionNotificationEvent;
+import ru.xakaton.bimit.model.Model;
+import ru.xakaton.bimit.model.ProcessState;
+import ru.xakaton.bimit.repository.ProcessRepository;
+import ru.xakaton.bimit.storage.StorageService;
 
 @Service
 @Scope("prototype")
