@@ -17,7 +17,7 @@ import ru.xakaton.bimit.model.Model;
 import ru.xakaton.bimit.service.ModelService;
 
 @RestController
-@RequestMapping("/models")
+@RequestMapping("/model")
 public class RevisionController {
 	@Autowired
 	ModelService modelService;
@@ -36,5 +36,6 @@ public class RevisionController {
 		return modelService.addModel(allParams, file);
 	}
 
+	
 
 }

@@ -33,7 +33,7 @@ public enum DeviceType {
 	}
 
 	@JsonCreator
-	static DeviceType findValue(@JsonProperty("value") String value) {
+	public static DeviceType findValue(@JsonProperty("value") String value) {
 		try {
 			int x = Integer.parseInt(value);
 			return Arrays.stream(DeviceType.values()).filter(v -> v.getValue() == x).findFirst().get();
