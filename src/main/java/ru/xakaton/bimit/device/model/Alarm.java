@@ -3,6 +3,7 @@ package ru.xakaton.bimit.device.model;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -10,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import ru.xakaton.bimit.device.enums.AlarmLevel;
 
+@Entity
 public class Alarm {
 	@Id
 	@GeneratedValue
