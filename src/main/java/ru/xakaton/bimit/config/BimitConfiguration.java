@@ -24,9 +24,6 @@ import ru.xakaton.bimit.storage.StorageProperties;
 @EnableAsync
 public class BimitConfiguration {
 
-	@Value("${database.ifc.defaultRepository}")
-	private String defaultRepository;
-
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
