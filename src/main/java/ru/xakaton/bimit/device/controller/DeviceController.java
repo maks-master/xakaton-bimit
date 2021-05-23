@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ru.xakaton.bimit.device.model.Alarm;
 import ru.xakaton.bimit.device.model.AlarmTimeLine;
 import ru.xakaton.bimit.device.model.Device;
 import ru.xakaton.bimit.device.service.DeviceService;
@@ -29,6 +28,16 @@ public class DeviceController {
 	@GetMapping("/devices")
 	public List<Device> devices(){
 		return deviceService.list();
+	}
+	
+	@GetMapping("/devices/types")
+	public DeviceType[] deviceTypes(){
+		return deviceService.deviceTypes();
+	}
+	
+	@GetMapping("/devices/states")
+	public DeviceState[] deviceStates(){
+		return deviceService.deviceStates();
 	}
 	
 	@PostMapping("/devices")
