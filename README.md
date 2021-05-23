@@ -20,3 +20,22 @@ docker run -p 8080:8080 -e DATABASE=//IP_ADRESS:5432/xakaton  docker.pkg.github.
 ```
 docker run --name docker-xakaton-web -p 8080:8080 -e DATABASE=//IP_ADRESS:5432/xakaton --rm -d -v ./logs:/usr/local/tomcat/logs  docker.pkg.github.com/maks-master/xakaton-bimit-web/docker-xakaton-web:work
 ```
+
+
+## Сборка проекта
+
+Клонируем
+```
+git clone https://github.com/maks-master/xakaton-bimit-web.git
+```
+```
+cd ./xakaton-bimit-web
+```
+Сборка
+```
+mvn clean package -Pprod
+```
+Результат
+```
+./xakaton-bimit-web/target/xakaton.war
+```
