@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ru.xakaton.bimit.device.enums.DeviceState;
 import ru.xakaton.bimit.device.enums.DeviceType;
 import ru.xakaton.bimit.device.model.Alarm;
 import ru.xakaton.bimit.device.model.AlarmDTO;
@@ -42,6 +43,14 @@ public class DeviceService {
 	
 	public List<Device> list() {
 		return (List<Device>) deviceRepository.findAll();
+	}
+	
+	public DeviceType[] deviceTypes() {
+		return DeviceType.values();
+	}
+	
+	public DeviceState[] deviceStates() {
+		return DeviceState.values();
 	}
 
 	public Device save(Device device) {
@@ -125,4 +134,5 @@ public class DeviceService {
 	public Alarm getAlarm(UUID uuid) {
 		return alarmRepository.findById(uuid).orElse(null);
 	}
+
 }
