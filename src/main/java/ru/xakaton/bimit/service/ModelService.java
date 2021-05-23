@@ -180,4 +180,14 @@ public class ModelService {
 		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+
+	public ResponseEntity<?> readStateDevice(UUID devUuid) {
+		
+		DeviceState deviceState = deviceStateRepository.findFirstByDeviceUuid(devUuid).orElse(null);
+		if (deviceState != null) {
+			deviceState.setAlarmUuid(null);
+			deviceStateRepository.save(deviceState);
+		}
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 }
