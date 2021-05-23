@@ -47,9 +47,9 @@ public class ModelController {
 	}
 	
 	
-	@PatchMapping("/devices/state/{uuid}/read")
-	public ResponseEntity<?> readState(@RequestParam("uuid") UUID uuid) {
-		return modelService.readState(uuid);
+	@PatchMapping("/devices/state/{stateUuid}/read")
+	public ResponseEntity<?> readState(@PathVariable UUID stateUuid) {
+		return modelService.readState(stateUuid);
 	}
 	
 

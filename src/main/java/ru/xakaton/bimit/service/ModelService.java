@@ -174,7 +174,8 @@ public class ModelService {
 
 	public ResponseEntity<?> readState(UUID uuid) {
 		DeviceState deviceState = deviceStateRepository.findById(uuid).orElse(null);
-		if (deviceState != null) {deviceState.setAlarmUuid(null);
+		if (deviceState != null) {
+			deviceState.setAlarmUuid(null);
 			deviceStateRepository.save(deviceState);
 		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
