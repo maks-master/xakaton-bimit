@@ -123,9 +123,10 @@ public class ModelService {
 			DeviceStateDTO destination = context.getDestination();
 			String color="#DEDEDE;";
 			
-			if (source.getAlarmUuid()!=null) { 
+			if (source.getAlarmUuid() != null) { 
 				Alarm alarm = alarmRepository.findById(source.getAlarmUuid()).get();
 				if (alarm!=null) {
+					destination.setAlarm(alarm);
 					switch (alarm.getAlarmLevel()) {
 					case WARNING:
 						//желтый
@@ -154,7 +155,8 @@ public class ModelService {
 					if (device.getMaxValue()!=null && device.getMinValue()!=null) {
 						
 						int val = (int) (150 + (avg-device.getMinValue()) * 100/(device.getMaxValue() - device.getMinValue()));
-						
+						if (val>255) val= 255;
+						if (val<150) val = 150;
 						//00FF33	00FF00	00CC00	33CC33	00CC33
 						//155-250
 						color="0,"+val+",51";

@@ -131,5 +131,8 @@ public class DeviceService {
 		return new AlarmTimeLine(alarms, new Date().getTime());
 	}
 
-	
+	public Alarm getAlarm(UUID uuid) {
+		return alarmRepository.findById(uuid).orElse(null);
+	}
+
 }

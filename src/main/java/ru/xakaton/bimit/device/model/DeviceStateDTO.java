@@ -5,7 +5,7 @@ import java.util.UUID;
 public class DeviceStateDTO {
 	
 	private UUID deviceUuid;
-	private UUID alarmUuid;
+	private Alarm alarm;
 	
 	private java.sql.Timestamp time;
 	
@@ -25,12 +25,13 @@ public class DeviceStateDTO {
 	}
 
 
-	public UUID getAlarmUuid() {
-		return alarmUuid;
+
+	public Alarm getAlarm() {
+		return alarm;
 	}
 
-	public void setAlarmUuid(UUID alarmUuid) {
-		this.alarmUuid = alarmUuid;
+	public void setAlarm(Alarm alarm) {
+		this.alarm = alarm;
 	}
 
 	public java.sql.Timestamp getTime() {
