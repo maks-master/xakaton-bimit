@@ -39,3 +39,5 @@ mvn clean package -Pprod
 ```
 ./xakaton-bimit-web/target/xakaton.war
 ```
+
+Используем сборку Dockerfile
